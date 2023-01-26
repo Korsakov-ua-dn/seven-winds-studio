@@ -1,0 +1,18 @@
+.menu {
+    height: 100%;
+    display: flex;
+    gap: 20px;
+}
+.menu-link {}
+.menu-link a {
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border-bottom: 2px solid transparent;
+    color: var(--font-color-grey)
+}
+.menu-link a.active {
+    color: #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
+}
