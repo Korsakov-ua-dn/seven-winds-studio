@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import "./MenuLinks.style.scss";
-import { NavLink } from "react-router-dom";
 import { MenuLinkType } from "./MenuLinks.types";
+import { CustomLink } from "../CustomLink";
 
 type PropsType = {};
 
@@ -9,7 +9,7 @@ const MenuLinks: React.FC<PropsType> = (props) => {
   const options = {
     menuItems: useMemo<MenuLinkType[]>(
       () => [
-        { key: 1, title: "Просмотр", link: "/" },
+        { key: 1, title: "Просмотр", link: "/view" },
         { key: 2, title: "Управление", link: "/control" },
       ],
       []
@@ -19,8 +19,8 @@ const MenuLinks: React.FC<PropsType> = (props) => {
   return (
     <ul className="menu">
       {options.menuItems.map((item) => (
-        <li className={"menu-link"}>
-          <NavLink to={item.link}>{item.title}</NavLink>
+        <li key={item.key} className={"menu__link"}>
+          <CustomLink to={item.link}>{item.title}</CustomLink>
         </li>
       ))}
     </ul>

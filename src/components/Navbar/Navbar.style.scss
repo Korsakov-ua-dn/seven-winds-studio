@@ -3,7 +3,7 @@
     display: flex;
     gap: 20px;
 }
-.menu__link .custom-link {
+.menu-link a {
     padding: 0 4px;
     display: flex;
     align-items: center;
@@ -11,7 +11,7 @@
     border-bottom: 2px solid transparent;
     color: var(--font-color-grey)
 }
-.menu__link .custom-link.custom-link_active {
+.menu-link a.active {
     color: #FFFFFF;
     border-bottom: 2px solid #FFFFFF;
 }

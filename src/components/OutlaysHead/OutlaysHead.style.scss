@@ -1,0 +1,20 @@
+.outlays-head {
+    height: 44px;
+    display: flex;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--color-border);
+}
+.project-name {
+    height: 100%;
+    width: 214px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--color-border);
+}
+.project-title {
+    padding: 0 15px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--color-border);
+}
