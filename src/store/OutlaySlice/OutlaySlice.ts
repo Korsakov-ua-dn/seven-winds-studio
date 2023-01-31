@@ -9,16 +9,15 @@ import { outlayApi } from "../../api";
 import { OutlayRow, OutlaysState } from "./OutlaysSlice.types";
 
 // thunk
-export const fetchAllOutlays = createAsyncThunk<
-  OutlayRow[],
-  undefined,
+export const fetchOutlaysByEid = createAsyncThunk<
+  {data: OutlayRow[], title: string},
+  {eID: number, title: string},
   { rejectValue: string, state: RootState  }
->("outlays/GET_LIST", async (_, { rejectWithValue, getState }) => {
+>("outlays/GET_LIST", async (payload, { rejectWithValue }) => {
   try {
     
-    const eID = getState().outlays.eID;
-    const response = await outlayApi.getList(eID);
-    return await response.data;
+    const response = await outlayApi.getList(payload.eID);
+    return await {data: response.data, title: payload.title};
 
   } catch (err) {
     return rejectWithValue(
@@ -29,7 +28,7 @@ export const fetchAllOutlays = createAsyncThunk<
 
 // slice
 const initialState: OutlaysState = {
-  eID: 31476,
+  title: "",
   data: [],
   loading: false,
   error: null,
@@ -39,18 +38,20 @@ const outlaysSlice = createSlice({
   name: "outlays",
   initialState,
   reducers: {
-    // setLimit(state, action: PayloadAction<number>) {
-    //   state.limit = action.payload
-    // },
+    resetState(state) {
+      state.title = "";
+      state.data = [];
+    },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchAllOutlays.pending, (state) => {
+      .addCase(fetchOutlaysByEid.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchAllOutlays.fulfilled, (state, action) => {
-        state.data = action.payload;
+      .addCase(fetchOutlaysByEid.fulfilled, (state, action) => {
+        state.data = action.payload.data;
+        state.title = action.payload.title;
         state.loading = false;
       })
       .addMatcher(isError, (state, action: PayloadAction<string>) => {

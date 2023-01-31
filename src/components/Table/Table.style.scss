@@ -1,0 +1,26 @@
+.table {
+  overflow-x: auto;
+  padding: 0 10px;
+  &::-webkit-scrollbar {
+    position: fixed;
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    position: fixed;
+    background: var(--color-border);
+  }
+  &::-webkit-scrollbar-thumb {
+    position: fixed;
+    background: var(--color-grey);
+    border-radius: 12px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--color-list);
+  }
+  & table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    overflow: hidden;
+  }
+}

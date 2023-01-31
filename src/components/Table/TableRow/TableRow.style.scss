@@ -1,0 +1,36 @@
+.table__body-row {
+  height: 60px;
+  border-bottom: 1px solid var(--color-border);
+}
+.table__body-row:not(:last-of-type) {
+  border-bottom: 1px solid var(--color-border);
+}
+.table__body-item {
+  padding: 0 12px;
+  & .ul,
+  & .li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 55px;
+    height: 28px;
+    padding-left: 2px;
+    border-radius: 6px;
+
+    & .row-icon {
+      cursor: pointer;
+    }
+    & .trash-fill {
+      visibility: hidden;
+    }
+  }
+
+  & .ul:hover,
+  & .li:hover {
+    background-color: var(--color-border);
+    & .trash-fill {
+      visibility: visible;
+      cursor: pointer;
+    }
+  }
+}
